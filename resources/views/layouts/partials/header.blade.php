@@ -68,15 +68,15 @@ include('cosa.php');
 <header>
    <div class="row">
       <div class="col-sm-2">
-         <ul>
+         <ul class="list-unstyled m-3">
             <li><img
                src="{{ asset('assest/images') }}/logo-n.png"
                class="img-fluid" alt="Logo" style="height: 80px;"></li>
          </ul>
       </div>
       <div class="col-sm-5">
-         <ul>
-            <li>Hola</li>
+         <ul class="list-unstyled">
+            <li>Aquí va un buscador</li>
          </ul>
       </div>
       <div class="col-sm-5">
@@ -84,31 +84,34 @@ include('cosa.php');
             <x-dropdown titulo="{{ $carro['uno'] }}" icono="{{ $carro['dos'] }}">
                <li>
                   @foreach ($carro['tres'] as $tres)
-                  <x-carro titulo="{{$tres['titulo']}}" cantidad="{{$tres['cantidad']}}" img="{{$tres['img']}}" precio="{{$tres['precio']}}" categoria="{{$tres['categoria']}}">
-                  </x-carro>
+                  <x-header.carro titulo="{{$tres['titulo']}}" cantidad="{{$tres['cantidad']}}" img="{{$tres['img']}}" precio="{{$tres['precio']}}" categoria="{{$tres['categoria']}}">
+                  </x-header.carro>
                   @endforeach
                </li>
             </x-dropdown>
             <x-dropdown titulo="{{ $notificaciones['uno'] }}" icono="{{ $notificaciones['dos'] }}">
                <li>
                   @foreach ($notificaciones['tres'] as $tres)
-                  <x-notificaciones titulo="{{$tres['titulo']}}" cuerpo="{{$tres['cuerpo']}}" n_tipo="{{$tres['n_tipo']}}">
-                  </x-notificaciones>
+                  <x-header.notificaciones titulo="{{$tres['titulo']}}" cuerpo="{{$tres['cuerpo']}}" n_tipo="{{$tres['n_tipo']}}">
+                  </x-header.notificaciones>
                   @endforeach
                </li>
             </x-dropdown>
             <x-dropdown titulo="Usuario" icono="fas fa-user">
                @guest
-               <a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt c_gray"></i></i>Login</a>
-               <a class="dropdown-item" href="#"><i class="fas fa-user-plus c_gray"></i>registrate</a>
-               <a class="dropdown-item" href="#"><i class="fas fa-envelope-open-text c_gray"></i>Contacto</a>
-               <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="#"><i class="fas fa-heart c_gray"></i>Favoritos</a>
+               <x-header.guest-menu>
+                  </x-header.guest-menu>
                @endguest
                @auth
-               // The data only available for auth user
+               <x-header.user-menu>
+               </x-header.user-menu>
+               <p>Alejandro Aparicio</p>
                @endauth
             </x-dropdown>
+            @auth
+            <li class="fw-light fs-6 " style="margin-top: 12px;">Bienvenido, {{Auth::user()->name}}</li>
+
+            @endauth
          </ul>
       </div>
    </div>
