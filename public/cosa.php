@@ -12,9 +12,9 @@ $notificaciones = array(
 	
 	"uno"=> "notificaciones", "dos" => "fas fa-bell",
 	'tres'=>array (
-	array('titulo'=>'mensaje Uno', 'cuerpo'=>'Este es el cuerpo de mensaje 1'),
-	array('titulo'=>'mensaje Dos', 'cuerpo'=>'Este es el cuerpo de mensaje 2'),
-	array('titulo'=>'mensaje Tres', 'cuerpo'=>'Este es el cuerpo de mensaje 3'))
+	array('titulo'=>'mensaje Uno', 'cuerpo'=>'Este es el cuerpo de mensaje 1', 'n_tipo'=>'notifications_icon'),
+	array('titulo'=>'mensaje Dos', 'cuerpo'=>'Este es el cuerpo de mensaje 2', 'n_tipo'=>'notifications_icon'),
+	array('titulo'=>'mensaje Tres', 'cuerpo'=>'Este es el cuerpo de mensaje 3', 'n_tipo'=>'notifications_icon'))
 );
 
 
