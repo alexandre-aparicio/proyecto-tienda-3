@@ -40,6 +40,30 @@ include('cosa.php');
    .dropdown-menu {
    padding: 5px 5px 5px 5px;
    }
+
+   .dropdown-toggle::after {
+    content: none;
+    text-decoration: none;
+   }
+
+   .dropdown i {
+    margin-top: 20px;
+    font-size: 23px;
+   }
+
+   .dropdown a {
+    color: black;
+    text-decoration: none;
+    cursor:pointer;
+    font-size: 16px;
+   }
+
+ .dropdown .c_gray {
+   color:  gray;
+   margin-right: 12px;
+   font-size: 16px;
+  }
+
 </style>
 <header>
    <div class="row">
@@ -75,11 +99,11 @@ include('cosa.php');
             </x-dropdown>
             <x-dropdown titulo="Usuario" icono="fas fa-user">
                @guest
-               <a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i></i>Login</a>
-               <a class="dropdown-item" href="#"><i class="fas fa-user-plus"></i>registrate</a>
-               <a class="dropdown-item" href="#"><i class="fas fa-envelope-open-text"></i>Contacto</a>
+               <a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt c_gray"></i></i>Login</a>
+               <a class="dropdown-item" href="#"><i class="fas fa-user-plus c_gray"></i>registrate</a>
+               <a class="dropdown-item" href="#"><i class="fas fa-envelope-open-text c_gray"></i>Contacto</a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="#"><i class="fas fa-heart"></i>Favoritos</a>
+               <a class="dropdown-item" href="#"><i class="fas fa-heart c_gray"></i>Favoritos</a>
                @endguest
                @auth
                // The data only available for auth user
