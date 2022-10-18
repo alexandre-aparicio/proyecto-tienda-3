@@ -2,7 +2,7 @@
 @props (['titulo'])    
 @props (['img'])   
 @props (['precio'])  
-@props (['categoria'])                       
+                    
 
                 <div class="card card-carro mb-3">
                   <div class="card-body">
@@ -15,7 +15,7 @@
                         </div>
                         <div class="ms-3">
                           <p>{{$titulo}}</p>
-                          <p>{{ $categoria }}</p>
+                          
                         </div>
                       </div>
                       <div class="d-flex flex-row align-items-center">
