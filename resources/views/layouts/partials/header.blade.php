@@ -83,8 +83,8 @@ include('cosa.php');
          <ul class="list-group list-group-horizontal">
             <x-dropdown titulo="{{ $carro['uno'] }}" icono="{{ $carro['dos'] }}">
                <li>
-                  @foreach ($carro['tres'] as $tres)
-                  <x-header.carro titulo="{{$tres['titulo']}}" cantidad="{{$tres['cantidad']}}" img="{{$tres['img']}}" precio="{{$tres['precio']}}" categoria="{{$tres['categoria']}}">
+                  @foreach ($carrito as $carro)
+                  <x-header.carro titulo="{{$carro['nombre']}}" cantidad="{{$carro['cantidad']}}" img="{{$carro['imagen_url']}}" precio="{{$carro['precio']}}" categoria="">
                   </x-header.carro>
                   @endforeach
                </li>
@@ -116,6 +116,9 @@ include('cosa.php');
             <li class="fw-light fs-6 " style="margin-top: 12px;">Bienvenido, {{Auth::user()->name}}</li>
 
             @endauth
+
+            
+
          </ul>
       </div>
    </div>
