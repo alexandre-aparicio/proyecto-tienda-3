@@ -91,10 +91,14 @@ include('cosa.php');
             </x-dropdown>
             <x-dropdown titulo="{{ $notificaciones['uno'] }}" icono="{{ $notificaciones['dos'] }}">
                <li>
-                  @foreach ($notificaciones['tres'] as $tres)
-                  <x-header.notificaciones titulo="{{$tres['titulo']}}" cuerpo="{{$tres['cuerpo']}}" n_tipo="{{$tres['n_tipo']}}">
+                  @if ($mensajes)
+                  @foreach ($mensajes as $mensaje)
+                  <x-header.notificaciones titulo="{{$mensaje['asunto']}}" cuerpo="{{$mensaje['cuerpo']}}" n_tipo="{{$mensaje['icono']}}" color="{{$mensaje['color']}}">
                   </x-header.notificaciones>
                   @endforeach
+                  @else
+                  NO HAY MENSAJES
+                  @endif
                </li>
             </x-dropdown>
             <x-dropdown titulo="Usuario" icono="fas fa-user">

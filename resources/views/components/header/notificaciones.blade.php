@@ -1,9 +1,9 @@
 @props (['titulo'])
 @props (['cuerpo'])
 @props (['n_tipo'])
+@props (['color'])
 
-
-<div class="card card-mess p-1">         
+<div class="card card-mess p-1" style="background: {{ $color }};">         
 
                <div class="d-flex flex-row align-items-center">
                 <div class="p-1 px-2 d-flex flex-column align-items-center rounded">

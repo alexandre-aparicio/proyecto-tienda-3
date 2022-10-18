@@ -67,10 +67,6 @@ class AuthController extends Controller
         ];
 
         Mail::to($request->email)->send(new TestEmail($mailData));
-
-    
-
-
          
         return redirect("/")->withSuccess('You have signed-in');
     }
