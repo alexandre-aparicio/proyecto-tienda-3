@@ -65,6 +65,10 @@ include('cosa.php');
   }
 
 </style>
+
+
+
+
 <header>
    <div class="row">
       <div class="col-sm-2">
@@ -76,20 +80,37 @@ include('cosa.php');
       </div>
       <div class="col-sm-5">
          <ul class="list-unstyled">
-            <li>Aquí va un buscador</li>
+            <li><div class="dropdown allow-focus">
+  <button id="dropdownLabel" type="button" class="btn btn-default"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown trigger
+    <span class="caret"></span>
+  </button>
+  <div class="dropdown-menu panel" aria-labelledby="dropdownLabel">
+    <div class="col-xs-12">
+      What's Your Name?
+      <input type="text" placeholder="Name" class="form-control" />
+    </div>
+  </div>
+</div></li>
          </ul>
       </div>
       <div class="col-sm-5">
          <ul class="list-group list-group-horizontal">
-            <x-dropdown titulo="{{ $carro['uno'] }}" icono="{{ $carro['dos'] }}">
+            <x-dropdown titulo="{{ $carro['uno'] }}" icono="{{ $carro['dos'] }}" volare="myDropdown">
                <li>
+                  
+                  @if ($carrito)
                   @foreach ($carrito as $carro)
-                  <x-header.carro titulo="{{$carro['nombre']}}" cantidad="{{$carro['cantidad']}}" img="{{$carro['imagen_url']}}" precio="{{$carro['precio']}}" >
+                  <x-header.carro titulo="{{$carro['nombre']}}" cantidad="{{$carro['cantidad']}}" img="{{$carro['imagen_url']}}" precio="{{$carro['precio']}}" cart_id="{{$carro['cart_id']}}" >
                   </x-header.carro>
                   @endforeach
+                  @else
+                  CARRO VACIO
+                  @endif
                </li>
             </x-dropdown>
-            <x-dropdown titulo="{{ $notificaciones['uno'] }}" icono="{{ $notificaciones['dos'] }}">
+            <x-dropdown titulo="{{ $notificaciones['uno'] }}" icono="{{ $notificaciones['dos'] }} " volare="pepe1">
                <li>
                   @if ($mensajes)
                   @foreach ($mensajes as $mensaje)
@@ -101,15 +122,14 @@ include('cosa.php');
                   @endif
                </li>
             </x-dropdown>
-            <x-dropdown titulo="Usuario" icono="fas fa-user">
+            <x-dropdown titulo="Usuario" icono="fas fa-user" volare="pepe2">
                @guest
                <x-header.guest-menu>
                   </x-header.guest-menu>
                @endguest
                @auth
                <x-header.user-menu>
-               </x-header.user-menu>
-               <p>Alejandro Aparicio</p>
+               </x-header.user-menu>               
                @endauth
             </x-dropdown>
             @auth
@@ -121,3 +141,15 @@ include('cosa.php');
       </div>
    </div>
 </header>
+<script>
+   // Esta funci贸n evita que se cierre el dropdown si se hace click dentro
+
+$('#myDropdown .dropdown-menu').on({
+   "click":function(e){
+      e.stopPropagation();
+    }
+});
+ 
+
+ 
+</script>

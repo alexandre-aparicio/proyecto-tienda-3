@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\SessionCart;
 use App\Models\Cart;
+use App\Models\Product;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -31,21 +32,32 @@ class HomeController extends Controller
         DB::insert('insert into session_carts (user_id, s_cart_id) values (?, ?)', [$id, $rand_part]);
        
        } else {
+        
         if (Auth::user()) {            
             // Actualiza el usuario
             DB::update('update session_carts set user_id = ? where s_cart_id = ?',[Auth::user()->id,Session::get('idCarrito')]);
         }
         
-        // Aquí empiezo a hacer cosas del carrito
+        $id_carro = SessionCart::where('s_cart_id', '=', Session::get('idCarrito'))->first();
+            
+            if ( $id_carro) {
+            $id_carro = $id_carro->id;
+            
+            $carro = Cart::where('session_cart_id', '=', $id_carro)->join('products', 'carts.product_id', '=', 'products.id')->select('products.*', 'carts.id AS cart_id')->get();   
+       
+            } else {
+                $carro = null;
+            }
         
        }
 
+       $productos = Product::get();
+
+
+
        
 
-       $id_carro = SessionCart::where('s_cart_id', '=', Session::get('idCarrito'))->first();
-            $id_carro = $id_carro->id;
-            
-        $carro = Cart::where('session_cart_id', '=', $id_carro)->join('products', 'carts.product_id', '=', 'products.id')->select('products.*')->get();   
+          
        
              
 
@@ -56,6 +68,6 @@ class HomeController extends Controller
         
        
 
-        return view('welcome', ['mensajes' => $mensajes, 'carrito' => $carro] );        
+        return view('welcome', ['mensajes' => $mensajes, 'carrito' => $carro, 'productos'=>$productos] );        
     }
 }

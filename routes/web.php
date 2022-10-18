@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,14 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard'); 
+//Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard'); 
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom'); 
 Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
+
+
+Route::post('cart-insert/', [CartController::class, 'store'])->name('cart-insert');
+Route::delete('cart-delete/{id}', [CartController::class, 'destroy'])->name('cart-delete');
