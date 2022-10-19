@@ -42,6 +42,10 @@ Para esta parte del proyecto se crea la base de datos MySQL con el sistema de mi
 
 - [Ver la Sección en funcionamiento](https://aleaparicio.es/proyectos/proyecto-tienda-3/).
 
+## Captura de pantalla
+
+<p align="center"><a href="https://aleaparicio.es/proyectos/Captura-1.PNG"><img src="https://aleaparicio.es/proyectos/Captura-1.PNG" width="500"  alt="Build Status"></a></p>
+
 ## Funcionalidades
 
 - Loguin ✔ [How](https://www.positronx.io/laravel-custom-authentication-login-and-registration-tutorial/)
@@ -56,8 +60,6 @@ Para esta parte del proyecto se crea la base de datos MySQL con el sistema de mi
 ## Planteamiento de los diferentes componentes Blade
 
 <p align="center"><a href="https://aleaparicio.es/proyectos/blade.png"><img src="https://aleaparicio.es/proyectos/blade.png" width="500"  alt="Build Status"></a></p>
-
-## Captura de pantalla
 
 ## Licencia
 
