@@ -1,7 +1,7 @@
 @extends('layouts.plantilla')
 
 @section('content')
-ESTA ES LA SECCIÓN MAIN (Welcome.blade.php)
+
 <div class="container">
 <div class="row g-4 row-cols-xl-4 row-cols-lg-3 row-cols-2 row-cols-md-2 mt-4">
 	@foreach ($productos as $producto)

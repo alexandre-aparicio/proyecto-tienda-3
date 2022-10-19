@@ -62,6 +62,20 @@ include('cosa.php');
    color:  gray;
    margin-right: 12px;
    font-size: 16px;
+
+  }
+
+  .num {
+   position: absolute;
+    top: 15px;
+    right: 80px;
+    padding: 0px 7px 0px 7px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+  }
+  .iconos {
+   position: relative;
   }
 
 </style>
@@ -96,13 +110,15 @@ include('cosa.php');
          </ul>
       </div>
       <div class="col-sm-5">
-         <ul class="list-group list-group-horizontal">
-            <x-dropdown titulo="{{ $carro['uno'] }}" icono="{{ $carro['dos'] }}" volare="myDropdown">
+         <ul class="list-group list-group-horizontal iconos">
+            
+            <x-dropdown titulo="{{ $carro['uno'] }}" icono="{{ $carro['dos'] }}" volare="myDropdown" n_carros="{{$n_carros}}">
+
                <li>
                   
                   @if ($carrito)
                   @foreach ($carrito as $carro)
-                  <x-header.carro titulo="{{$carro['nombre']}}" cantidad="{{$carro['cantidad']}}" img="{{$carro['imagen_url']}}" precio="{{$carro['precio']}}" cart_id="{{$carro['cart_id']}}" >
+                  <x-header.carro titulo="{{$carro['nombre']}}" cantidad="{{$carro['cantidad']}}" img="{{$carro['imagen_url']}}" precio="{{$carro['precio']}}" cart_id="{{$carro['cart_id']}}" n_carros="{{$n_carros}}">
                   </x-header.carro>
                   @endforeach
                   @else
@@ -110,11 +126,12 @@ include('cosa.php');
                   @endif
                </li>
             </x-dropdown>
-            <x-dropdown titulo="{{ $notificaciones['uno'] }}" icono="{{ $notificaciones['dos'] }} " volare="pepe1">
+
+            <x-dropdown titulo="{{ $notificaciones['uno'] }}" icono="{{ $notificaciones['dos'] }} " volare="pepe1" n_carros="0">
                <li>
                   @if ($mensajes)
                   @foreach ($mensajes as $mensaje)
-                  <x-header.notificaciones titulo="{{$mensaje['asunto']}}" cuerpo="{{$mensaje['cuerpo']}}" n_tipo="{{$mensaje['icono']}}" color="{{$mensaje['color']}}">
+                  <x-header.notificaciones titulo="{{$mensaje['asunto']}}" cuerpo="{{$mensaje['cuerpo']}}" n_tipo="{{$mensaje['icono']}}" color="{{$mensaje['color']}}" >
                   </x-header.notificaciones>
                   @endforeach
                   @else
@@ -122,7 +139,7 @@ include('cosa.php');
                   @endif
                </li>
             </x-dropdown>
-            <x-dropdown titulo="Usuario" icono="fas fa-user" volare="pepe2">
+            <x-dropdown titulo="Usuario" icono="fas fa-user" volare="pepe2" n_carros="0">
                @guest
                <x-header.guest-menu>
                   </x-header.guest-menu>
@@ -151,5 +168,31 @@ $('#myDropdown .dropdown-menu').on({
 });
  
 
- 
-</script>
+   // Esta funci贸n evita que se cierre el dropdown si se hace click dentro
+   
+
+   $(".deleteRecord").click(function(){
+      var id = $(this).data("id");
+      var token = $("meta[name='csrf-token']").attr("content");
+      var pepe = $(this).closest(".card").remove(); 
+      var num = $(".num") .text();
+      
+      console.log(num);
+      $(".num") .text(num-1);
+   
+   
+      $.ajax(
+      {
+         url: "../cart-delete/"+id,
+         type: 'POST',
+         data: {
+            "id": id,
+            "_token": token,
+            "_method": "delete",   
+         },
+         success: function (){  
+            
+         }
+      });
+   });
+</script>  

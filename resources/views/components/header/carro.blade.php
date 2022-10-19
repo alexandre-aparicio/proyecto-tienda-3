@@ -3,6 +3,8 @@
 @props (['img'])   
 @props (['precio'])  
 @props (['cart_id'])  
+
+
                     
                 <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="card card-carro mb-3">
@@ -39,7 +41,10 @@
       var id = $(this).data("id");
       var token = $("meta[name='csrf-token']").attr("content");
       var pepe = $(this).closest(".card").remove(); 
-      //var pepe = $(this).closest("tr").remove();  
+      var num = $(".num") .text();
+      
+      console.log(num);
+      //$(".num") .text(num-1);
    
    
       $.ajax(

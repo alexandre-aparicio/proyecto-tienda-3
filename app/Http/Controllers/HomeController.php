@@ -19,7 +19,8 @@ class HomeController extends Controller
             $mensajes = Message::join('mess_tipos', 'mess_tipos.id', '=', 'messages.icon_type')->get();
         } else {
             $mensajes = null;
-        }   
+        } 
+
         
        
        if (Session::get('idCarrito') == null) {       
@@ -43,31 +44,26 @@ class HomeController extends Controller
             if ( $id_carro) {
             $id_carro = $id_carro->id;
             
-            $carro = Cart::where('session_cart_id', '=', $id_carro)->join('products', 'carts.product_id', '=', 'products.id')->select('products.*', 'carts.id AS cart_id')->get();   
+            $carro = Cart::where('session_cart_id', '=', $id_carro)->join('products', 'carts.product_id', '=', 'products.id')->select('products.*', 'carts.id AS cart_id')->get();
+            if (isset($carro[0])){
+                $n_carros = count($carro);
+                $carro = $carro;
+
+            } else {
+                $carro = null;
+                $n_carros = 0;
+            }  
        
             } else {
                 $carro = null;
+                $n_carros = 0;
             }
         
        }
 
-       $productos = Product::get();
-
-
-
+       $productos = Product::get();       
        
 
-          
-       
-             
-
-            
-       
-      
-      
-        
-       
-
-        return view('welcome', ['mensajes' => $mensajes, 'carrito' => $carro, 'productos'=>$productos] );        
+        return view('welcome', ['mensajes' => $mensajes, 'carrito' => $carro, 'productos'=>$productos, 'n_carros' => $n_carros]);        
     }
 }
