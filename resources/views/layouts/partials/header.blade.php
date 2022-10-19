@@ -82,7 +82,7 @@ include('cosa.php');
 
 
 
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <header>
    <div class="row">
       <div class="col-sm-2">
@@ -94,19 +94,7 @@ include('cosa.php');
       </div>
       <div class="col-sm-5">
          <ul class="list-unstyled">
-            <li><div class="dropdown allow-focus">
-  <button id="dropdownLabel" type="button" class="btn btn-default"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown trigger
-    <span class="caret"></span>
-  </button>
-  <div class="dropdown-menu panel" aria-labelledby="dropdownLabel">
-    <div class="col-xs-12">
-      What's Your Name?
-      <input type="text" placeholder="Name" class="form-control" />
-    </div>
-  </div>
-</div></li>
+            <li>Aquí va un buscador</li>
          </ul>
       </div>
       <div class="col-sm-5">
@@ -114,7 +102,7 @@ include('cosa.php');
             
             <x-dropdown titulo="{{ $carro['uno'] }}" icono="{{ $carro['dos'] }}" volare="myDropdown" n_carros="{{$n_carros}}">
 
-               <li>
+               <li class="st">
                   
                   @if ($carrito)
                   @foreach ($carrito as $carro)
@@ -175,10 +163,18 @@ $('#myDropdown .dropdown-menu').on({
       var id = $(this).data("id");
       var token = $("meta[name='csrf-token']").attr("content");
       var pepe = $(this).closest(".card").remove(); 
-      var num = $(".num") .text();
-      
+      var num = $(".num").text();
       console.log(num);
-      $(".num") .text(num-1);
+      
+      if (num <= 1) {
+         var pepe = $(".st").text('CARRO VACIO'); 
+         console.log("entro");
+         $(".num") .text(num-1);
+         
+      } else {
+         $(".num") .text(num-1);
+      }
+      
    
    
       $.ajax(

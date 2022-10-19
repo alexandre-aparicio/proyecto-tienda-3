@@ -6,7 +6,7 @@
 
 
                     
-                <meta name="csrf-token" content="{{ csrf_token() }}">
+                
                 <div class="card card-carro mb-3">
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
@@ -33,35 +33,7 @@
                     </div>
                   </div>
                 </div>
-<script>
-   // Esta funci贸n evita que se cierre el dropdown si se hace click dentro
-   
-
-   $(".deleteRecord").click(function(){
-      var id = $(this).data("id");
-      var token = $("meta[name='csrf-token']").attr("content");
-      var pepe = $(this).closest(".card").remove(); 
-      var num = $(".num") .text();
-      
-      console.log(num);
-      //$(".num") .text(num-1);
-   
-   
-      $.ajax(
-      {
-         url: "../cart-delete/"+id,
-         type: 'POST',
-         data: {
-            "id": id,
-            "_token": token,
-            "_method": "delete",   
-         },
-         success: function (){  
-            
-         }
-      });
-   });
-</script>                
+              
                 
 
                 

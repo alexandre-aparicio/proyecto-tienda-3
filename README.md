@@ -27,21 +27,20 @@ Se crea la seccion del header con sus diferentes componentes Blade.
 
 ## Plantilla utilizada
 
-No se utiliza ninguna plantilla de momento, se crea de una forma sencilla utilizando únicamente el framework CSS Bootstrap.
+No se utiliza ninguna plantilla de momento, se crea de una forma básica utilizando únicamente el framework CSS Bootstrap.
 
 - Bootstrap Grid System
 - Bootstrap Dropdown
-
 
 ## Base de datos
 
 Para esta parte del proyecto se crea la base de datos MySQL con el sistema de migraciones. Se compone de las siguientes tablas.
 
-<p align="center"><a href="https://aleaparicio.es/proyectos/modelo.png"><img src="https://aleaparicio.es/proyectos/modelo.png" width="500"  alt="Build Status"></a></p>
+<p align="center"><a href="https://aleaparicio.es/proyectos/modelo.png"><img src="https://aleaparicio.es/proyectos/Base-Datos-Tienda-3-.png" width="500"  alt="Build Status"></a></p>
 
 ## Live Preview
 
-- [Ver la Sección en funcionamiento](https://aleaparicio.es/proyecto-blog/public).
+- [Ver la Sección en funcionamiento](https://aleaparicio.es/proyectos/proyecto-tienda-3/).
 
 ## Funcionalidades
 
@@ -54,10 +53,11 @@ Para esta parte del proyecto se crea la base de datos MySQL con el sistema de mi
 
 
 
-### Planteamiento de los diferentes componentes Blade
+## Planteamiento de los diferentes componentes Blade
 
 <p align="center"><a href="https://aleaparicio.es/proyectos/blade.png"><img src="https://aleaparicio.es/proyectos/blade.png" width="500"  alt="Build Status"></a></p>
 
+## Captura de pantalla
 
 ## Licencia
 
